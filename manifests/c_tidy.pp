@@ -16,7 +16,7 @@ class nagiosclient::c_tidy (
   notify { "## --->>> remove unwanted client packages for: ${c_package_name}": }
 
   package { 'samba-libs':
-    ensure         => purged,
+    ensure         => absent,
     }
 
   }

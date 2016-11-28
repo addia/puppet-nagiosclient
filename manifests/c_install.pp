@@ -21,14 +21,25 @@ class nagiosclient::c_install (
     ensure => latest,
   }
 
-  package { 'perl-Sys-Statistics-Linux':
-    ensure   => 'installed',
-    provider => 'rpm',
-    source   => "ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/csbuild:/Perl/CentOS_CentOS-6/noarch/perl-Sys-Statistics-Linux-0.66-1.1.noarch.rpm",
-    require  => Package['perl-Data-Dumper']
-  }
+  case $::osfamily {
+    'RedHat': {
+      package { 'perl-Sys-Statistics-Linux':
+      ensure   => 'installed',
+      provider => 'rpm',
+      source   => "puppet:///modules/nagiosclient/perl-Sys-Statistics-Linux-0.66-1.1.noarch.rpm",
+      require  => Package['perl-Data-Dumper']
+      }
+    }
+    'Archlinux': {
+      $perl_packages  = ['perl-sys-statistics-linux','perl-universal-require']
+      package { $perl_packages:
+        ensure   => 'installed',
+        require  => Package['perl-Data-Dumper']
+        }
+      }
+    }
 
-}
+  }
 
 
 # vim: set ts=2 sw=2 et :
