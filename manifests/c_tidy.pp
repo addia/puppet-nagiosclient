@@ -10,13 +10,13 @@
 # ===========================
 #
 class nagiosclient::c_tidy (
-  $c_package_name                        = $nagiosclient::c_params::c_package_name
+  $c_package_name  = $nagiosclient::c_params::c_package_name
   ) inherits nagiosclient::c_params {
 
   notify { "## --->>> remove unwanted client packages for: ${c_package_name}": }
 
   package { 'samba-libs':
-    ensure                             => purged,
+    ensure         => purged,
     }
 
   }

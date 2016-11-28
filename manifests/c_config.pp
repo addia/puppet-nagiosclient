@@ -18,12 +18,6 @@ class nagiosclient::c_config (
 
   notify { "## --->>> Updating client config files for: ${c_package_name} ": }
 
-  exec { "fix_the_client_hostname_pants":
-    command            => "cat /etc/hosts | tr [:upper:] [:lower:] > /tmp/hh; mv -f /tmp/hh /etc/hosts",
-    onlyif             => "grep -v '^#' /etc/hosts | grep -q -e '[[:upper:]]'",
-    path               => "/sbin:/bin:/usr/sbin:/usr/bin",
-    }
-
   # With selinux, some nrpe plugins require additional rules to work
   #if $selinux and $::selinux_enforced {
   #  selinux::audit2allow { 'nrpe':

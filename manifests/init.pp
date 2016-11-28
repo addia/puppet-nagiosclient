@@ -15,11 +15,11 @@
 #     c_group                            = run as group
 #     c_userid                           = default uid
 #     c_grpuid                           = default gid
+#     c_nagios_server                    = nagios_server fqdn
+#     c_nagios_server_ip                 = nagios_server ip
 #     c_home_dir                         = nagios home directory
 #     c_config_dir                       = nagios config directory
 #     c_plugin_dir                       = nagios plugin directory
-#     c_nagios_server                    = the server url
-#     c_nagios_server_ip                 = the server ip
 #
 # ===========================
 #
@@ -42,11 +42,11 @@ class nagiosclient (
   $c_group                               = $nagiosclient::c_params::c_group,
   $c_userid                              = $nagiosclient::c_params::c_userid,
   $c_grpuid                              = $nagiosclient::c_params::c_grpuid,
-  $c_home_dir                            = $nagiosclient::c_params::c_home_dir,
-  $c_config_dir                          = $nagiosclient::c_params::c_config_dir,
-  $c_plugin_dir                          = $nagiosclient::c_params::c_plugin_dir,
   $c_nagios_server                       = $nagiosclient::c_params::c_nagios_server,
-  $c_nagios_server_ip                    = $nagiosclient::c_params::c_nagios_server_ip
+  $c_nagios_server_ip                    = $nagiosclient::c_params::c_nagios_server_ip,
+  $c_config_dir                          = $nagiosclient::c_params::c_config_dir,
+  $c_home_dir                            = $nagiosclient::c_params::c_home_dir,
+  $c_plugin_dir                          = $nagiosclient::c_params::c_plugin_dir,
 
   ) inherits nagiosclient::c_params {
 

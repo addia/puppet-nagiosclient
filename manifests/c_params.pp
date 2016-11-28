@@ -11,13 +11,14 @@
 #
 class nagiosclient::c_params {
 
-  $c_package_name                        = 'nagios-client'
-  $c_user                                = 'nagios'
-  $c_group                               = 'nagios'
-  $c_userid                              = '240'
-  $c_grpuid                              = '240'
-  $c_nagios_server                       = hiera('nagios_server_name')
-  $c_nagios_server_ip                    = hiera('nagios_server_ip')
+  $c_package_name       = 'nagios-client'
+  $c_user               = 'nagios'
+  $c_group              = 'nagios'
+  $c_userid             = '240'
+  $c_grpuid             = '240'
+  $c_nagios_server      = hiera('nagios_server_name')
+  $c_nagios_server_ip   = hiera('nagios_server_ip')
+
   case $::osfamily {
     'ArchLinux': {
       $c_config_dir     = '/etc/nagios'
