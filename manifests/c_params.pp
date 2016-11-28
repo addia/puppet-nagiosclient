@@ -16,11 +16,20 @@ class nagiosclient::c_params {
   $c_group                               = 'nagios'
   $c_userid                              = '240'
   $c_grpuid                              = '240'
-  $c_home_dir                            = '/var/spool/nagios'
-  $c_config_dir                          = '/etc/nagios'
-  $c_plugin_dir                          = hiera('nagios_plugin_dir')
   $c_nagios_server                       = hiera('nagios_server_name')
   $c_nagios_server_ip                    = hiera('nagios_server_ip')
+  case $::osfamily {
+    'ArchLinux': {
+      $c_config_dir     = '/etc/nagios'
+      $c_home_dir       = '/var/nagios/spool'
+      $c_plugin_dir     = '/usr/lib/monitoring-plugins'
+      }
+    'RedHat': {
+      $c_config_dir     = '/etc/nagios'
+      $c_home_dir       = '/var/spool/nagios'
+      $c_plugin_dir     = '/usr/lib64/nagios/plugins'
+      }
+    }
   }
 
 
