@@ -27,13 +27,35 @@ class nagiosclient::c_config (
 
   # put the command file for nrpe in place
   file { "${c_config_dir}/nrpe.cfg":
-    ensure             => file,
-    owner              => 'root',
-    group              => 'root',
-    mode               => '0644',
-    replace            => true,
-    content            => template('nagiosclient/nrpe.cfg.erb'),
-    notify             => Service['nrpe'],
+    ensure       => file,
+    owner        => 'root',
+    group        => 'root',
+    mode         => '0644',
+    replace      => true,
+    content      => template('nagiosclient/nrpe.cfg.erb'),
+    notify       => Service['nrpe'],
+    }
+
+  # put the pid config file for nrpe in place:
+  file { '/usr/lib/tmpfiles.d/nrpe.conf':
+    ensure       => 'file',
+    path         => '/usr/lib/tmpfiles.d/nrpe.conf',
+    owner        => 'root',
+    group        => 'root',
+    mode         => '0644',
+    replace      => true,
+    content      => template('nagiosclient/nrpe.conf.erb'),
+    notify       => Service['nagios']
+    }
+
+  # put the service file for nrpe in place:
+  systemd::unit_file { 'nrpe.service':
+    content      => template('nagiosclient/nrpe.service.erb'),
+    }
+
+  # remove the redundant user
+  user { 'nrpe':
+    ensure       => 'absent',
     }
 
   }

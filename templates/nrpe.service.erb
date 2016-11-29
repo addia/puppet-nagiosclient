@@ -1,0 +1,15 @@
+[Unit]
+Description=Daemon to answer plugin requests from Nagios on remote hosts
+After=network.target
+Requires=network.target
+
+[Service]
+Type=forking
+User=<%= @user %>
+Group=<%= @group %>
+EnvironmentFile=-/etc/sysconfig/nrpe
+ExecStart=/usr/sbin/nrpe -c <%= @config_dir %>/nrpe.cfg -d $NRPE_SSL_OPT
+
+
+[Install]
+WantedBy=multi-user.target
