@@ -55,7 +55,6 @@ class nagiosclient (
     anchor { 'nagiosclient::begin': } ->
     class { '::nagiosclient::c_account': } ->
     class { '::nagiosclient::c_install': } ->
-    class { '::nagiosclient::c_tidy': } ->
     class { '::nagiosclient::c_config': } ->
     class { '::nagiosclient::c_plugins': } ->
     class { '::nagiosclient::c_service': } ->
