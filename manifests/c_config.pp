@@ -45,7 +45,7 @@ class nagiosclient::c_config (
     mode         => '0644',
     replace      => true,
     content      => template('nagiosclient/nrpe.conf.erb'),
-    notify       => Service['nagios']
+    notify       => Service['nrpe']
     }
 
   # put the service file for nrpe in place:
