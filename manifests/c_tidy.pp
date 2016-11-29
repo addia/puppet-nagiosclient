@@ -15,8 +15,13 @@ class nagiosclient::c_tidy (
 
   notify { "## --->>> remove unwanted client packages for: ${c_package_name}": }
 
-  package { 'samba-libs':
-    ensure         => absent,
+  case $::osfamily {
+    'RedHat': {
+      $tidy_packages = ['samba-libs', 'samba-common-tools']
+      package { $tidy_packages:
+        ensure         => absent,
+        }
+      }
     }
 
   }
