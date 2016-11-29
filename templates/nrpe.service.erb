@@ -5,8 +5,8 @@ Requires=network.target
 
 [Service]
 Type=forking
-User=<%= @user %>
-Group=<%= @group %>
+User=<%= @c_user %>
+Group=<%= @c_group %>
 EnvironmentFile=-/etc/sysconfig/nrpe
 ExecStart=/usr/sbin/nrpe -c <%= @config_dir %>/nrpe.cfg -d $NRPE_SSL_OPT
 
