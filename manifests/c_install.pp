@@ -18,7 +18,7 @@ class nagiosclient::c_install (
 
   case $::osfamily {
     'RedHat': {
-      $client_packages = ['nagios-plugins-all','nagios-plugins-check-updates','nagios-plugins-ifstatus','nagios-plugins-uptime','nagios-plugins-nrpe','nrpe', 'perl-Data-Dumper']
+      $client_packages = ['nagios-plugins-snmp','nagios-plugins-dhcp','nagios-plugins-mysql','nagios-plugins-ssh','nagios-plugins-ping','nagios-plugins-swap','nagios-plugins-check-updates','nagios-plugins-flexlm','nagios-plugins-ircd','nagios-plugins-cluster','nagios-plugins-mrtg','nagios-plugins-ntp','nagios-common','nagios-plugins','nagios-plugins-nrpe','nagios-plugins-wave','nagios-plugins-breeze','nagios-plugins-file_age','nagios-plugins-time','nagios-plugins-http','nagios-plugins-dns','nagios-plugins-oracle','nagios-plugins-procs','nagios-plugins-pgsql','nagios-plugins-nwstat','nagios-plugins-disk','nagios-plugins-tcp','nagios-plugins-nt','nagios-plugins-fping','nagios-plugins-dig','nagios-plugins-sensors','nagios-plugins-ide_smart','nagios-plugins-ldap','nagios-plugins-icmp','nagios-plugins-ifstatus','nagios-plugins-nagios','nagios-plugins-smtp','nagios-plugins-by_ssh','nagios-plugins-log','nagios-plugins-real','nagios-plugins-mrtgtraf','nagios-plugins-dummy','nagios-plugins-rpc','nagios-plugins-load','nagios-plugins-ntp-perl','nagios-plugins-users','nagios-plugins-uptime','nagios-plugins-perl','nagios-plugins-mailq','nagios-plugins-hpjd','nagios-plugins-ups','nagios-plugins-game','nagios-plugins-overcr','perl-Data-Dumper','nrpe']
       }
     'Archlinux': {
       $client_packages = ['perl-sys-statistics-linux','perl-universal-require','percona-nagios-plugins','nagios-nrpe-plugin','nrpe','perl-data-dumper-concise']
