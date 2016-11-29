@@ -16,24 +16,24 @@ class nagiosclient::c_install (
   notify { "## --->>> Installing plugins for package: ${c_package_name}":
   }
 
-  $client_packages = ['nagios-plugins-all','nagios-plugins-check-updates','nagios-plugins-ifstatus','nagios-plugins-uptime','nagios-plugins-nrpe','nrpe', 'perl-Data-Dumper']
+  case $::osfamily {
+    'RedHat': {
+      $client_packages = ['nagios-plugins-all','nagios-plugins-check-updates','nagios-plugins-ifstatus','nagios-plugins-uptime','nagios-plugins-nrpe','nrpe', 'perl-Data-Dumper']
+      }
+    'Archlinux': {
+      $client_packages = ['perl-sys-statistics-linux','perl-universal-require','percona-nagios-plugins','nagios-nrpe-plugin','nrpe','perl-data-dumper-concise']
+      }
+    }
   package { $client_packages :
     ensure => latest,
-  }
+    }
 
   case $::osfamily {
     'RedHat': {
       package { 'perl-Sys-Statistics-Linux':
-      ensure   => 'installed',
-      provider => 'rpm',
-      source   => "puppet:///modules/nagiosclient/perl-Sys-Statistics-Linux-0.66-1.1.noarch.rpm",
-      require  => Package['perl-Data-Dumper']
-      }
-    }
-    'Archlinux': {
-      $perl_packages  = ['perl-sys-statistics-linux','perl-universal-require']
-      package { $perl_packages:
         ensure   => 'installed',
+        provider => 'rpm',
+        source   => "puppet:///modules/nagiosclient/perl-Sys-Statistics-Linux-0.66-1.1.noarch.rpm",
         require  => Package['perl-Data-Dumper']
         }
       }

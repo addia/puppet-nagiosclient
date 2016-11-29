@@ -20,9 +20,18 @@ class nagiosclient::c_account (
 
   notify { "## --->>> Creating client accounts for: ${c_package_name}": }
 
+  # ensure hone directory exists
+  file { $c_home_dir :
+    ensure        => directory,
+    owner         => $c_user,
+    group         => $c_group,
+    mode          => '0755'
+    }
+
   group { $c_group:
     ensure          => 'present',
-    gid             => $c_guid
+    gid             => $c_guid,
+    require        => File[$c_home_dir]
     }
 
   user { $c_user: 
@@ -31,7 +40,6 @@ class nagiosclient::c_account (
     uid             => $c_uid,
     gid             => $c_guid,
     password        => '!',
-    managehome      => true,
     require         => Group["$c_group"]
     }
 
