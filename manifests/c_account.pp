@@ -15,12 +15,20 @@ class nagiosclient::c_account (
   $c_group          = $nagiosclient::c_params::c_group,
   $c_uid            = $nagiosclient::c_params::c_uid,
   $c_guid           = $nagiosclient::c_params::c_guid,
+  $c_work_dir       = $nagiosclient::c_params::c_work_dir,
   $c_home_dir       = $nagiosclient::c_params::c_home_dir
   ) inherits nagiosclient::c_params {
 
   notify { "## --->>> Creating client accounts for: ${c_package_name}": }
 
   # ensure hone directory exists
+  file { $c_work_dir :
+    ensure        => directory,
+    owner         => $c_user,
+    group         => $c_group,
+    mode          => '0755'
+    }
+
   file { $c_home_dir :
     ensure        => directory,
     owner         => $c_user,

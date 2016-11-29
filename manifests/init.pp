@@ -17,6 +17,7 @@
 #     c_grpuid                           = default gid
 #     c_nagios_server                    = nagios_server fqdn
 #     c_nagios_server_ip                 = nagios_server ip
+#     c_work_dir                         = nagios work directory
 #     c_home_dir                         = nagios home directory
 #     c_config_dir                       = nagios config directory
 #     c_plugin_dir                       = nagios plugin directory
@@ -45,6 +46,7 @@ class nagiosclient (
   $c_nagios_server                       = $nagiosclient::c_params::c_nagios_server,
   $c_nagios_server_ip                    = $nagiosclient::c_params::c_nagios_server_ip,
   $c_config_dir                          = $nagiosclient::c_params::c_config_dir,
+  $c_work_dir                            = $nagiosclient::c_params::c_work_dir,
   $c_home_dir                            = $nagiosclient::c_params::c_home_dir,
   $c_plugin_dir                          = $nagiosclient::c_params::c_plugin_dir,
 

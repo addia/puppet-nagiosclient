@@ -22,11 +22,13 @@ class nagiosclient::c_params {
   case $::osfamily {
     'ArchLinux': {
       $c_config_dir     = '/etc/nagios'
+      $c_work_dir       = '/var/nagios'
       $c_home_dir       = '/var/nagios/spool'
       $c_plugin_dir     = '/usr/lib/monitoring-plugins'
       }
     'RedHat': {
       $c_config_dir     = '/etc/nagios'
+      $c_work_dir       = '/var/spool'
       $c_home_dir       = '/var/spool/nagios'
       $c_plugin_dir     = '/usr/lib64/nagios/plugins'
       }
