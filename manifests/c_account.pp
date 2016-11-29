@@ -24,8 +24,8 @@ class nagiosclient::c_account (
   # ensure hone directory exists
   file { $c_work_dir :
     ensure        => directory,
-    owner         => 'root',
-    group         => 'root',
+    owner         => $c_user,
+    group         => $c_group,
     mode          => '0755'
     }
 
