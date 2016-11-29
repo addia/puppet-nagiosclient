@@ -31,7 +31,6 @@ class nagiosclient::c_account (
   group { $c_group:
     ensure          => 'present',
     gid             => $c_guid,
-    require        => File[$c_home_dir]
     }
 
   user { $c_user: 
