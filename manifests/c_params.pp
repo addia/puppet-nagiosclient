@@ -28,7 +28,7 @@ class nagiosclient::c_params {
       }
     'RedHat': {
       $c_config_dir     = '/etc/nagios'
-      $c_work_dir       = '/var/spool/nagios'
+      $c_work_dir       = '/var/log/nagios'
       $c_home_dir       = '/var/spool/nagios'
       $c_plugin_dir     = '/usr/lib64/nagios/plugins'
       }
