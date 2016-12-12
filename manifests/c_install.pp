@@ -33,7 +33,8 @@ class nagiosclient::c_install (
       package { 'perl-Sys-Statistics-Linux':
         ensure   => 'installed',
         provider => 'rpm',
-        source   => "puppet:///modules/nagiosclient/perl-Sys-Statistics-Linux-0.66-1.1.noarch.rpm",
+        source   => 'ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/csbuild:/Perl/CentOS_CentOS-6/noarch/perl-Sys-Statistics-Linux-0.66-1.1.noarch.rpm',
+#       source   => "puppet:///modules/nagiosclient/perl-Sys-Statistics-Linux-0.66-1.1.noarch.rpm",
         require  => Package['perl-Data-Dumper']
         }
       }
